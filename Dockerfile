@@ -1,8 +1,6 @@
 FROM alpine:latest
 
-MAINTAINER alex <alexwhen@gmail.com> 
-
-RUN mkdir -p /run/nginx && apk --update add nginx
+RUN mkdir -p /run/nginx && apk --update add nginx && sed -i "s#return 404;#root   html;#g" /etc/nginx/conf.d/default.conf
 
 COPY 2048 /usr/share/nginx/html
 
